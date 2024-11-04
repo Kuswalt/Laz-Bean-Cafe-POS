@@ -1,0 +1,132 @@
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #e0e0e0;
+    padding: 20px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    top: 0;
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.category-button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.menu-icon {
+    margin-top: auto;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-image: url('/Layers.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Main content */
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 220px;
+    background-color: #f2f2f2;
+}
+
+
+/* Payment button */
+
+.payment-bar {
+    background-color: #a1e4ce;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.payment-button {
+    background-color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Order list */
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-item {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-button,
+.remove-button {
+    background-color: #d3d3d3;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    bottom: 20px;
+    left: 220px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal button {
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+}

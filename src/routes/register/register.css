@@ -1,39 +1,10 @@
-<script>
-    import { goto } from '$app/navigation';
-    let username = '';
-	let password = '';
-</script>
-<div class="container">
-  <!-- Logo Section -->
-  <div class="logo">
-    <span class="logo-text">Shop Logo</span>
-  </div>
-
-  <!-- Login Card -->
-  <div class="login-card">
-    <label for="username">LOGIN</label>
-    <input type="text" id="username" bind:value={username} placeholder="Username" />
-
-    <label for="password">Password</label>
-    <input type="password" id="password" bind:value={password} placeholder="Password" />
-
-    <button on:click={() => goto('/Ordering')}>Login</button>
-
-    <div class="register-link">
-      No Account? <a href="/register">Register.</a>
-    </div>
-  </div>
-</div>
-
-<style>
-  
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 3rem;
+    top: 5rem;
     left: 10rem;
 }
 
@@ -94,6 +65,13 @@
     text-align: center;
     margin-top: 10px;
     font-size: 0.9em;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+    left: 25%;
+    width: 50%;
 }
 
 .register-link a {
@@ -103,4 +81,3 @@
 .register-link a:hover {
     text-decoration: underline;
 }
-</style>
