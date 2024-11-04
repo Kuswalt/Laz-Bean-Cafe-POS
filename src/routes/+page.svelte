@@ -6,7 +6,7 @@
     let password = '';
 
     async function login() {
-        const response = await fetch('/api/routes.php', {
+        const response = await fetch('http://localhost/Laz-Bean-Cafe-POS/api/routes.php?request=login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

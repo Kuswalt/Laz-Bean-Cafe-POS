@@ -7,7 +7,7 @@
 
     async function register() {
         try {
-            const response = await fetch('http://localhost/Laz-Bean-Cafe-POS/api/routes.php', {
+            const response = await fetch('http://localhost/Laz-Bean-Cafe-POS/api/routes.php?request=add-account', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,12 +19,24 @@
                 })
             });
 
-            const result = await response.json();
-            if (result.status) {
-                alert('Registration successful');
-                goto('/'); // Redirect to login page or another page
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                // Log the response text for debugging
+                const text = await response.text();
+                console.log('Response text:', text);
+
+                const result = JSON.parse(text); // Parse the text as JSON
+                if (result.status) {
+                    alert('Registration successful');
+                    goto('/'); // Redirect to login page or another page
+                } else {
+                    alert(result.message);
+                }
             } else {
-                alert(result.message);
+                // Log the response text for debugging
+                const text = await response.text();
+                console.error('Unexpected response:', text);
+                throw new Error('Invalid JSON response');
             }
         } catch (error) {
             console.error('Error during registration:', error);
