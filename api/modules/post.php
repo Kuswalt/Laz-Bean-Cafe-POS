@@ -16,7 +16,7 @@ class Post {
         $password = password_hash($data['password'], PASSWORD_BCRYPT);
 
         // Check if username already exists
-        $query = $this->conn->prepare('SELECT id FROM users WHERE username = ?');
+        $query = $this->conn->prepare('SELECT User_id FROM user_acc WHERE username = ?');
         $query->bind_param('s', $username);
         $query->execute();
         $query->store_result();
@@ -25,7 +25,7 @@ class Post {
             return ['status' => false, 'message' => 'Username already exists'];
         } else {
             // Insert new user
-            $query = $this->conn->prepare('INSERT INTO users (username, password) VALUES (?, ?)');
+            $query = $this->conn->prepare('INSERT INTO user_acc (username, password) VALUES (?, ?)');
             $query->bind_param('ss', $username, $password);
             if ($query->execute()) {
                 return ['status' => true, 'message' => 'User registered successfully'];
@@ -40,7 +40,7 @@ class Post {
         $password = $data['password'];
 
         // Check user credentials
-        $query = $this->conn->prepare('SELECT password FROM users WHERE username = ?');
+        $query = $this->conn->prepare('SELECT password FROM user_acc WHERE username = ?');
         $query->bind_param('s', $username);
         $query->execute();
         $query->store_result();

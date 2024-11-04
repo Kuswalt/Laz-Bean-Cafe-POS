@@ -6,24 +6,29 @@
     let password = '';
 
     async function register() {
-        const response = await fetch('/api/routes.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                action: 'register',
-                username,
-                password
-            })
-        });
+        try {
+            const response = await fetch('http://localhost/Laz-Bean-Cafe-POS/api/routes.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    action: 'add-account',
+                    username,
+                    password
+                })
+            });
 
-        const result = await response.json();
-        if (result.status) {
-            alert('Registration successful');
-            goto('/'); // Redirect to login page or another page
-        } else {
-            alert(result.message);
+            const result = await response.json();
+            if (result.status) {
+                alert('Registration successful');
+                goto('/'); // Redirect to login page or another page
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            console.error('Error during registration:', error);
+            alert('An error occurred. Please try again.');
         }
     }
 </script>

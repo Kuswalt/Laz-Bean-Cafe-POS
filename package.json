@@ -59,6 +59,7 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
-		"flowbite": "^2.5.2"
+		"flowbite": "^2.5.2",
+		"laz-bean-cafe-pos": "file:"
 	}
 }
