@@ -1,8 +1,33 @@
 <script>
     import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
+
     let username = '';
-	let password = '';
+    let password = '';
+
+    async function login() {
+        const response = await fetch('/api/routes.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'login',
+                username,
+                password
+            })
+        });
+
+        const result = await response.json();
+        if (result.status) {
+            goto('/Ordering');
+        } else {
+            alert(result.message);
+        }
+    }
+
 </script>
+
 <div class="container">
   <!-- Logo Section -->
   <div class="logo">
@@ -17,10 +42,10 @@
     <label for="password">Password</label>
     <input type="password" id="password" bind:value={password} placeholder="Password" />
 
-    <button on:click={() => goto('/Ordering')}>Login</button>
+    <button on:click={login}>Login</button>
 
     <div class="register-link">
-      No Account? <a href="/register">Register.</a>
+      No Account? <a href="/register" on:click>Register.</a>
     </div>
   </div>
 </div>
