@@ -1,6 +1,4 @@
 .container {
-    background-color: #f9f9f9;
-    padding-top: 10px;
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
@@ -32,8 +30,6 @@
     flex-direction: column;
     padding: 20px;
     background-color: #f9f9f9;
-    position: relative;
-    left: inherit;
 }
 
 .top-bar {

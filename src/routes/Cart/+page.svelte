@@ -29,18 +29,30 @@
 
     <main class="content">
         <div class="payment-bar">
-            <button class="payment-button">Payment</button>
+          <a href="/Pay">  <button class="payment-button">Payment</button></a>
         </div>
 
         <div class="order-list">
             {#each orders as order, index}
                 <div class="order-item">
-                    <span>{index + 1}</span>
-                    <button class="add-button" on:click={() => addItem(index)}>Add</button>
-                    <button class="remove-button" on:click={() => removeItem(index)}>Remove</button>
+                    <span class="item-counter">{index + 1}</span>
+                    <div class="controls">
+                        <div class="quantity-controls">
+                            <button class="arrow-button" on:click={() => addItem(index)}>
+                                <img src="/Arrow up-circle.png" alt="Up Arrow" class="arrow-icon">
+                            </button>
+                            <span class="quantity">{order.quantity}</span>
+                            <button class="arrow-button" on:click={() => removeItem(index)}>
+                                <img src="/Arrow down-circle.png" alt="Down Arrow" class="arrow-icon">
+                            </button>
+                        </div>
+                        <button class="remove-button" on:click={() => removeItem(index)}>Remove</button>
+                    </div>
                 </div>
             {/each}
         </div>
+        
+        
     </main>
 
     <Modal bind:showModal={showModal} on:close={() => (showModal = false)} />

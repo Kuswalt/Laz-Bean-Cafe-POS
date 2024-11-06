@@ -56,16 +56,18 @@
     padding: 20px;
     margin-left: 220px;
     background-color: #f2f2f2;
+    overflow-y: auto;
 }
 
 
 /* Payment button */
 
 .payment-bar {
+    border-radius: 10px;
     background-color: #a1e4ce;
     padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin-bottom: 20px;
 }
 
@@ -81,9 +83,10 @@
 /* Order list */
 
 .order-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
 }
 
 .order-item {
@@ -94,6 +97,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
+    margin: 10px;
+}
+
+.item-counter {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.controls {
+    display: flex;
+    gap: 5px;
+    position: relative;
 }
 
 .add-button,
@@ -103,6 +119,29 @@
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.quantity-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.arrow-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 23px;
+}
+
+.quantity {
+    font-weight: bold;
+    font-size: 16px;
 }
 
 
