@@ -1,106 +1,82 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
-    export let onToggleModal: () => void;
-    export let onSelectCategory: (category: string) => void;
-  
-    let categories = ['All Items', 'Pizza', 'Coffee', 'Tea', 'MilkTea', 'Burgers'];
-    let isEditMode = false;
-    const dispatch = createEventDispatcher();
+  import { goto } from '$app/navigation';
 
-    function selectCategory(category: string) {
-        onSelectCategory(category);
-    }
+  export let onCategorySelect: (category: string) => void;
+  export let currentPage: string;
 
-    function toggleEditMode() {
-        isEditMode = !isEditMode;
-        dispatch('editModeChange', isEditMode);
-    }
+  function navigateToPayment() {
+    goto('/Pay');
+  }
 
-    function addItem() {
-        const newItem = prompt("Enter new category name:");
-        if (newItem) {
-            categories = [...categories, newItem];
-        }
-    }
-
-    function deleteItem(category: string) {
-        categories = categories.filter(item => item !== category);
-    }
 </script>
-  
-<div class="sidebar">
-    <div class="profile">A</div>
-    {#each categories as category}
-      <button class="category-button" on:click={() => selectCategory(category)}>
-        {category}
-        {#if isEditMode}
-          <button on:click={() => deleteItem(category)}>Delete</button>
-        {/if}
-      </button>
-    {/each}
-
-    {#if isEditMode}
-      <button class="category-button" on:click={addItem}>Add</button>
-    {/if}
-
-    <button class="menu-icon" on:click={onToggleModal} style="background-image: url('/Layers.png');" aria-label="Toggle Modal"></button>
-    <button class="category-button" on:click={toggleEditMode}>{isEditMode ? 'Close Edit' : 'Edit'}</button>
-</div>
 
 <style>
-    .sidebar {
-        background-color: #e0e0e0;
-        padding: 20px;
-        width: 200px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        left: 0;
-        height: 100%;
-        top: 0;
-    }
+  aside {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    padding: 10px;
+    background-color: #d1a15d;
+  }
 
-    .profile {
-        width: 50px;
-        height: 50px;
-        background-color: #ffffff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
+  .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .category-button {
-        background-color: #fff;
-        border: none;
-        padding: 10px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        width: 100%;
-        text-align: center;
-        position: relative;
-    }
+  ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
 
-    .category-button button {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: red;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
+  li {
+    margin: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
-    .menu-icon {
-        margin-top: auto;
-        cursor: pointer;
-        width: 50px;
-        height: 50px;
-        background-size: cover;
-        background-position: center;
-    }
+  .checkout-button {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+  }
 </style>
+
+<aside>
+  <div class="icon">A</div>
+
+  {#if currentPage === 'pay'}
+    <button class="checkout-button" on:click={null}>Check Out</button>
+  {:else if currentPage === 'cart'}
+    <button on:click={navigateToPayment}>Payment</button>
+  {:else}
+    <ul>
+      <li on:click={() => onCategorySelect("All Items")}>All Items</li>
+      <li on:click={() => onCategorySelect("Pizza")}>Pizza</li>
+      <li on:click={() => onCategorySelect("Burgers")}>Burgers</li>
+      <li on:click={() => onCategorySelect("Milktea")}>Milktea</li>
+      <li on:click={() => onCategorySelect("Yakult Mix")}>Yakult Mix</li>
+      <li on:click={() => onCategorySelect("Fries")}>Fries</li>
+    </ul>
+  {/if}
+</aside>
+

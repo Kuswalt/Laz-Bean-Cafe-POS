@@ -1,60 +1,55 @@
+<!-- Cart.svelte -->
 <script lang="ts">
+    import { goto } from '$app/navigation';
+    import Header from '../Utilities/Header.svelte';
     import Sidebar from '../Utilities/Sidebar.svelte';
-    import Modal from '../Utilities/Modal.svelte';
-    import './Cart.css';
-
-    let showModal = false;
-    let categories = ["Pizza", "Burger", "Coffee", "Tea", "MilkTea"];
-    let orders = Array(4).fill({ quantity: 0 });
-
-    function toggleModal() {
-        showModal = !showModal;
-    }
-
-    function addItem(index: number) {
-        orders[index].quantity++;
-    }
-
-    function removeItem(index: number) {
-        orders[index].quantity = Math.max(0, orders[index].quantity - 1);
-    }
-
+    import './cart.css';
+  
+    let selectedCategory: string = "Your Orders";
+  
     function updateCategory(category: string) {
-        console.log(`Selected category: ${category}`);
+      selectedCategory = category;
     }
-</script>
-
-<div class="layout">
-    <Sidebar onToggleModal={toggleModal} onSelectCategory={updateCategory} />
-
-    <main class="content">
-        <div class="payment-bar">
-          <a href="/Pay">  <button class="payment-button">Payment</button></a>
-        </div>
-
+  
+    // Sample orders array for demonstration
+    let orders = [
+      { name: "Food Item 1", quantity: 1 },
+      { name: "Food Item 2", quantity: 1 },
+      { name: "Food Item 3", quantity: 1 },
+    ];
+  
+    function incrementQuantity(order) {
+      order.quantity++;
+    }
+  
+    function decrementQuantity(order) {
+      if (order.quantity > 1) {
+        order.quantity--;
+      }
+    }
+  </script>
+  
+  <div class="container">
+    <Sidebar onCategorySelect={updateCategory} currentPage="cart" />
+    <div style="flex-grow: 1;">
+      <Header currentPage="cart" />
+      <h2>{selectedCategory}</h2>
+      <main>
         <div class="order-list">
-            {#each orders as order, index}
-                <div class="order-item">
-                    <span class="item-counter">{index + 1}</span>
-                    <div class="controls">
-                        <div class="quantity-controls">
-                            <button class="arrow-button" on:click={() => addItem(index)}>
-                                <img src="/Arrow up-circle.png" alt="Up Arrow" class="arrow-icon">
-                            </button>
-                            <span class="quantity">{order.quantity}</span>
-                            <button class="arrow-button" on:click={() => removeItem(index)}>
-                                <img src="/Arrow down-circle.png" alt="Down Arrow" class="arrow-icon">
-                            </button>
-                        </div>
-                        <button class="remove-button" on:click={() => removeItem(index)}>Remove</button>
-                    </div>
-                </div>
-            {/each}
+          <!-- Display the list of food orders with quantity controls -->
+          {#each orders as order}
+            <div class="order-item">
+              <span class="name">{order.name}</span>
+              <div class="quantity-controls">
+                <button on:click={() => incrementQuantity(order)} class="arrow-button">▲</button>
+                <span class="quantity-display">{order.quantity}</span>
+                <button on:click={() => decrementQuantity(order)} class="arrow-button">▼</button>
+              </div>
+              <button class="remove-button">Remove</button>
+            </div>
+          {/each}
         </div>
-        
-        
-    </main>
-
-    <Modal bind:showModal={showModal} on:close={() => (showModal = false)} />
-</div>
-
+      </main>
+    </div>
+  </div>
+  

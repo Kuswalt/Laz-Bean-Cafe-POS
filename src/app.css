@@ -1,12 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body,
+html {
     justify-content: center;
-    position: relative;
-    top: 1rem;
-    left: 10rem;
+    background-color: #606C38;
+    overflow-x: hidden;
+    height: 100vh;
 }

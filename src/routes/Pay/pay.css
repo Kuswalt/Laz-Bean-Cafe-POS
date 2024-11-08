@@ -1,168 +1,51 @@
-/* Container for the entire layout */
-
 .container {
     display: flex;
     height: 100vh;
-    width: 100%;
 }
 
-
-/* Sidebar styling */
-
-.sidebar {
-    background-color: #e0e0e0;
-    padding: 20px;
-    width: 180px;
+.main-content {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    height: 100%;
-    top: 0;
 }
 
-
-/* Profile circle in the sidebar */
-
-.profile {
-    width: 100px;
-    height: 100px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-
-/* Sidebar button styling */
-
-.sidebar-btn {
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffffff;
-    cursor: pointer;
+h2 {
+    background-color: rgb(211, 161, 93);
+    width: 15%;
+    margin: 10px;
     text-align: center;
-    font-size: 14px;
-}
-
-
-/* Menu icon at the bottom of the sidebar */
-
-.menu-icon {
-    margin-top: auto;
-    width: 50px;
-    height: 50px;
-    background-image: url('/Layers.png');
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-}
-
-
-/* Main content area */
-
-.content {
-    width: 73%;
-    flex-grow: .5;
-    padding: 15px;
-    margin-left: 200px;
-    background-color: #f2f2f2;
-    overflow-y: auto;
-}
-
-
-/* Header styling */
-
-.header {
-    background-color: #a1e4ce;
-    padding: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-
-/* Item list container */
-
-.item-list {
+    font-family: 'Crimson Text';
+    font-size: 30px;
+    padding: 0px;
     position: relative;
-    top: -20px;
-    left: 25px;
-    background-color: #D3D3D3;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flow-root;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 65rem;
-    align-content: space-between;
-    justify-content: space-evenly;
-    align-items: stretch;
+    top: -1%;
+    left: 3%;
+    border-radius: 11%;
+    min-width: 145px;
+    max-width: 200px;
 }
 
-
-/* Individual item styling */
-
-.item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+.order-summary {
+    background-color: #f5f5dc;
+    padding: 40px;
+    border-radius: 8px;
+    margin: 20px;
+    flex-grow: 1;
+    position: relative;
 }
 
-
-/* Footer with additional "Item Total" */
-
-.footer {
-    background-color: #110d0d;
-    padding: 1.5px;
+.item-total {
     text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: auto;
+    margin: 10px 0;
 }
 
-.footer-button {
-    color: #110d0d;
-    position: absolute;
-    background: none;
-    width: 9%;
-    left: 80%;
-}
-
-
-/* Modal content styling */
-
-
-/* Adjust the position of the modals here */
-
-.modal-content {
+.items {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 75px;
 }
 
-
-/* Modal button styling */
-
-.modal-btn {
-    background-color: #a1e4ce;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 8px 16px;
-    margin: 5px;
-    font-size: 14px;
+.item-line {
+    border-bottom: 1px solid #000;
+    margin: 5px 0;
 }
