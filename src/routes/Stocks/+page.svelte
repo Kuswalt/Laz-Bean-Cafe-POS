@@ -27,6 +27,8 @@
                     <input type="text" placeholder="DESCRIPTION" />
                     <input type="text" placeholder="PRICE" />
                     <button>Confirm</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </div>
             </div>
 

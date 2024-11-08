@@ -36,13 +36,13 @@
     justify-content: center;
   }
 
-  ul {
+  ul, .actions {
     list-style: none;
     padding: 0;
     width: 100%;
   }
 
-  li {
+  li, .action-button {
     margin: 10px 0;
     text-align: center;
     background-color: #fff;
@@ -68,6 +68,12 @@
     <button class="checkout-button" on:click={null}>Check Out</button>
   {:else if currentPage === 'cart'}
     <button on:click={navigateToPayment}>Payment</button>
+  {:else if currentPage === 'edit'}
+    <div class="actions">
+      <div class="action-button" on:click={() => onCategorySelect("Add")}>Add</div>
+      <div class="action-button" on:click={() => onCategorySelect("Edit")}>Edit</div>
+      <div class="action-button" on:click={() => onCategorySelect("Delete")}>Delete</div>
+    </div>
   {:else}
     <ul>
       <li on:click={() => onCategorySelect("All Items")}>All Items</li>
