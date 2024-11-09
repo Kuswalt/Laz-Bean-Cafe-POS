@@ -63,5 +63,23 @@ class Post {
             }
         }
     }
+
+    public function addItemStock($data) {
+        global $conn;
+        $product_id = $data['product_id'];
+        $stock_quantity = $data['stock_quantity'];
+
+        $sql = "INSERT INTO inventory (product_id, stock_quantity, last_updated) VALUES (:product_id, :stock_quantity, NOW())";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':product_id', $product_id);
+        $stmt->bindParam(':stock_quantity', $stock_quantity);
+
+        try {
+            $stmt->execute();
+            return ["status" => true, "message" => "Item stock added successfully"];
+        } catch (PDOException $e) {
+            return ["status" => false, "message" => "Failed to add item stock: " . $e->getMessage()];
+        }
+    }
 }
 ?>

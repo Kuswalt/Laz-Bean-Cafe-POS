@@ -70,17 +70,17 @@
     <button on:click={navigateToPayment}>Payment</button>
   {:else if currentPage === 'edit'}
     <div class="actions">
-      <div class="action-button" on:click={() => onCategorySelect("Add")}>Add</div>
-      <div class="action-button" on:click={() => onCategorySelect("Edit")}>Edit</div>
-      <div class="action-button" on:click={() => onCategorySelect("Delete")}>Delete</div>
+      <button class="action-button" on:click={() => onCategorySelect("Add")}>Add</button>
+      <button class="action-button" on:click={() => onCategorySelect("Edit")}>Edit</button>
+      <button class="action-button" on:click={() => onCategorySelect("Delete")}>Delete</button>
     </div>
   {:else}
     <ul>
       <li on:click={() => onCategorySelect("All Items")}>All Items</li>
-      <li on:click={() => onCategorySelect("Pizza")}>Pizza</li>
-      <li on:click={() => onCategorySelect("Burgers")}>Burgers</li>
-      <li on:click={() => onCategorySelect("Milktea")}>Milktea</li>
-      <li on:click={() => onCategorySelect("Yakult Mix")}>Yakult Mix</li>
+      <li><button type="button" on:click={() => onCategorySelect("Pizza")}>Pizza</button></li>
+      <li><button type="button" on:click={() => onCategorySelect("Burgers")}>Burgers</button></li>
+      <li><button type="button" on:click={() => onCategorySelect("Milktea")}>Milktea</button></li>
+      <li><button type="button" on:click={() => onCategorySelect("Yakult Mix")}>Yakult Mix</button></li>
       <li on:click={() => onCategorySelect("Fries")}>Fries</li>
     </ul>
   {/if}

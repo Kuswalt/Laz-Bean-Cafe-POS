@@ -12,8 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 require_once __DIR__ . '/config.php';
 require_once 'modules/post.php';
+require_once 'modules/update.php';
+require_once 'modules/delete.php';
 
 $post = new Post($conn);
+$update = new Update($conn);
+$delete = new Delete($conn);
 
 if (isset($_REQUEST['request'])) {
     $request = explode('/', $_REQUEST['request']);
@@ -33,6 +37,33 @@ try {
                     break;
                 case 'login':
                     echo json_encode($post->loginUser($data));
+                    break;
+                case 'add-item-stock':
+                    echo json_encode($post->addItemStock($data));
+                    break;
+                default:
+                    echo json_encode(["error" => "This is forbidden"]);
+                    http_response_code(403);
+                    break;
+            }
+            break;
+        case 'PUT':
+            $data = json_decode(file_get_contents("php://input"), true);
+            switch ($request[0]) {
+                case 'update-item-stock':
+                    echo json_encode($update->updateItemStock($data));
+                    break;
+                default:
+                    echo json_encode(["error" => "This is forbidden"]);
+                    http_response_code(403);
+                    break;
+            }
+            break;
+        case 'DELETE':
+            $data = json_decode(file_get_contents("php://input"), true);
+            switch ($request[0]) {
+                case 'delete-item-stock':
+                    echo json_encode($delete->deleteItemStock($data));
                     break;
                 default:
                     echo json_encode(["error" => "This is forbidden"]);
