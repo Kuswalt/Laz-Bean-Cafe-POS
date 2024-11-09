@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    background-color: rgb(211, 161, 93);
+    width: 15%;
+    margin: 10px;
+    text-align: center;
+    font-family: 'Crimson Text';
+    font-size: 30px;
+    padding: 0px;
+    position: relative;
+    top: -1%;
+    left: 3%;
+    border-radius: 11%;
+    min-width: 145px;
+    max-width: 200px;
+}
+
+.order-summary {
+    background-color: #f5f5dc;
+    padding: 40px;
+    border-radius: 8px;
+    margin: 20px;
+    flex-grow: 1;
+    position: relative;
+}
+
+.item-total {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+}
+
+.item-line {
+    border-bottom: 1px solid #000;
+    margin: 5px 0;
+}
