@@ -5,7 +5,7 @@
   export let currentPage: string;
 
   function navigateToPayment() {
-    goto('/Pay');
+    goto('/Pay', { replaceState: true });
   }
 
 </script>

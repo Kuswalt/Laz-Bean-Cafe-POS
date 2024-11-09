@@ -10,7 +10,7 @@
     }
   
     function navigateToCart() {
-      goto('/Cart');
+      goto('/Cart', { replaceState: true });
     }
   </script>
   

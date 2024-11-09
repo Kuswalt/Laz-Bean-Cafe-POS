@@ -4,7 +4,7 @@
   export let currentPage: string;
 
   function navigateToCart() {
-    goto('/Cart');
+    goto('/Cart', { replaceState: true });
   }
 </script>
 
@@ -17,8 +17,8 @@
     background-color: #d2a07e;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    width: 130%;
+    z-index: 3000;
+    width: 100%;
   }
 
   nav {

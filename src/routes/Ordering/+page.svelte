@@ -11,14 +11,13 @@
   }
 
   function navigateToCart() {
-    goto('/Cart');
+    goto('/Cart', { replaceState: true });
   }
 </script>
 
 <div class="container">
-  <!-- Sidebar with category selection handler -->
   <Sidebar onCategorySelect={updateCategory} currentPage="ordering" />
-  <div style="flex-grow: 1;">
+  <div class="main-content">
     <Header currentPage="ordering" />
     <h2>{selectedCategory}</h2>
     <main>

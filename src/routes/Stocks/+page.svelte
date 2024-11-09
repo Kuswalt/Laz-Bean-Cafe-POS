@@ -4,7 +4,7 @@
     import Sidebar from '../Utilities/Sidebar.svelte';
     import './Stocks.css';
 
-    let selectedCategory: string = 'All Item Stocks'; // Default display for initial load
+    let selectedCategory: string = 'All Item Stocks';
     let productName = '';
     let description = '';
     let price = '';
@@ -15,7 +15,7 @@
     }
 
     function navigateToCart() {
-        goto('/Cart');
+        goto('/Cart', { replaceState: true });
     }
 
     async function addItemStock() {
@@ -64,9 +64,9 @@
 </script>
 
 <div class="container">
-    <Sidebar onCategorySelect={handleCategorySelect} currentPage="home" />
+    <Sidebar onCategorySelect={handleCategorySelect} currentPage="stocks" />
     <div style="flex-grow: 1;">
-        <Header currentPage="edit" />
+        <Header currentPage="stocks" />
         <h2>{selectedCategory}</h2>
         <main>
             <div class="product-details">
@@ -81,7 +81,6 @@
                 </div>
             </div>
 
-            <!-- New table for displaying stock content -->
             <div class="stock-table">
                 <table>
                     <thead>

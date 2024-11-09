@@ -7,6 +7,9 @@
 aside {
     width: 15%;
     min-width: 200px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
 .main-content {
@@ -41,7 +44,7 @@ h2 {
     font-size: 30px;
     padding: 6px;
     position: relative;
-    top: 1%;
+    top: 0;
     left: 3%;
     border-radius: 11%;
     min-width: 145px;
@@ -57,7 +60,7 @@ main {
     flex-grow: 1;
     position: relative;
     left: 0;
-    top: 50px;
+    top: 0;
 }
 
 .cart-button {

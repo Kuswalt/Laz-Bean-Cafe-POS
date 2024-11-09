@@ -21,19 +21,17 @@
 
             const contentType = response.headers.get('content-type');
             if (contentType && contentType.includes('application/json')) {
-                // Log the response text for debugging
                 const text = await response.text();
                 console.log('Response text:', text);
 
-                const result = JSON.parse(text); // Parse the text as JSON
+                const result = JSON.parse(text);
                 if (result.status) {
                     alert('Registration successful');
-                    goto('/'); // Redirect to login page or another page
+                    goto('/', { replaceState: true });
                 } else {
                     alert(result.message);
                 }
             } else {
-                // Log the response text for debugging
                 const text = await response.text();
                 console.error('Unexpected response:', text);
                 throw new Error('Invalid JSON response');

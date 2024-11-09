@@ -20,7 +20,7 @@
 
         const result = await response.json();
         if (result.status) {
-            goto('/Ordering');
+            goto('/Ordering', { replaceState: true });
         } else {
             alert(result.message);
         }
